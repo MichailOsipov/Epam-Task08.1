@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace game_of_life_part_II
+namespace game_of_life_console
 {
 	class Program
 	{
