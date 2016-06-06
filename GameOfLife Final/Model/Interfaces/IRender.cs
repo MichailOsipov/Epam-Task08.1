@@ -8,7 +8,7 @@ namespace Model.Interfaces
 {
 	public interface IRender
 	{
-		void DrawField(HashSet<IObjectGame>[,]Field);
+		void DrawField(HashSet<IObjectGame>[,]Field,bool testflag);
 		void DrawSaves(List<string> saves);
 	}
 }

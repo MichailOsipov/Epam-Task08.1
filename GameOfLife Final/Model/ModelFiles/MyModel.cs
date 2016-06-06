@@ -156,11 +156,12 @@ namespace ModelFiles
 		/// </summary>
 		private void Update()
 		{
-
+			field1 = new HashSet<IObjectGame>[5, 3];
 		}
 		/// <summary>
 		/// Игровой поток
 		/// </summary>
+		bool testflag = true;
 		private void Waiter()
 		{
 			while (gameIsRunning)
@@ -171,10 +172,13 @@ namespace ModelFiles
 						DoSmth();
 				}
 				//Нужна ли DoSmth==null?
-				while (DoSmth == null && gameIsNotPaused && gameIsBeginOrNotFinished)
+				//while (DoSmth == null && gameIsNotPaused && gameIsBeginOrNotFinished)
+				while(true)
 				{
 					Update();
-					render.DrawField(field1);
+					render.DrawField(field1,testflag);
+					testflag = !testflag;
+					Thread.Sleep(1000);
 				}
 			}
 		}

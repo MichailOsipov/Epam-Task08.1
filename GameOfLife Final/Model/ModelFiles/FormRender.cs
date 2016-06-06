@@ -30,6 +30,7 @@ namespace ModelFiles
 		int width = -1;
 		int height = -1;
 		int imageSize = 64;//Размер картинки 36 пикселей
+		bool testflag;
 		/// <summary>
 		/// Отступы для панели
 		/// </summary>
@@ -64,27 +65,32 @@ namespace ModelFiles
 		/// <param name="Field"></param>
 		private void InitializeField(int newHeight, int newWidth)
 		{
-			height = newHeight;
-			width = newWidth;
+			if (myForm.InvokeRequired)
+				myForm.Invoke((Action)delegate() { InitializeField(newHeight, newWidth); });
+			else
+			{
+				height = newHeight;
+				width = newWidth;
 
-			panelField.Size = new Size(width * imageSize, height * imageSize);
-			imgArray = new PictureBox[width * height];
+				panelField.Size = new Size(width * imageSize, height * imageSize);
+				imgArray = new PictureBox[width * height];
 
-			myForm.MinimumSize = new Size(width * imageSize + panelField.Location.X + dx, height * imageSize + panelField.Location.Y + dy);
+				myForm.MinimumSize = new Size(width * imageSize + panelField.Location.X + dx, height * imageSize + panelField.Location.Y + dy);
 
-			for (int j = 0; j < height; j++)
-				for (int i = 0; i < width; i++)
-				{
-					imgArray[j * width + i] = new PictureBox();
-					imgArray[j * width + i].Margin = new Padding(0);
-					imgArray[j * width + i].Size = new Size(imageSize, imageSize);
-					imgArray[j * width + i].Image = null;
-					panelField.Controls.Add(imgArray[j * width + i]);
-					panelField.Controls[j * width + i].Location = new Point(imageSize * i, j * imageSize);
-					imgArray[j * width + i].SizeMode = PictureBoxSizeMode.Zoom;
-					imgArray[j * width + i].BorderStyle = BorderStyle.Fixed3D;
-					imgArray[j * width + i].BackColor = Color.White;
-				}
+				for (int j = 0; j < height; j++)
+					for (int i = 0; i < width; i++)
+					{
+						imgArray[j * width + i] = new PictureBox();
+						imgArray[j * width + i].Margin = new Padding(0);
+						imgArray[j * width + i].Size = new Size(imageSize, imageSize);
+						imgArray[j * width + i].Image = null;
+						panelField.Controls.Add(imgArray[j * width + i]);
+						panelField.Controls[j * width + i].Location = new Point(imageSize * i, j * imageSize);
+						imgArray[j * width + i].SizeMode = PictureBoxSizeMode.Zoom;
+						imgArray[j * width + i].BorderStyle = BorderStyle.Fixed3D;
+						imgArray[j * width + i].BackColor = Color.White;
+					}
+			}
 		}
 		/// <summary>
 		/// Получение картинки в зависимости от объектов на клетке поля
@@ -129,7 +135,12 @@ namespace ModelFiles
 			{
 				for (int i = 0; i < height; i++)
 					for (int j = 0; j < width; j++)
-						imgArray[i * width + j].Image = GetImage(field[i, j]);
+						if (testflag)
+							imgArray[i * width + j].Image = myImages["Cow"];
+						else
+							imgArray[i * width + j].Image = myImages["DefaultGrass"];
+
+						//imgArray[i * width + j].Image = GetImage(field[i, j]);
 						
 			}
 		}
@@ -137,8 +148,9 @@ namespace ModelFiles
 		/// Начинаем рисовать поле, если работаем с новым поле, пересоздаем поле
 		/// </summary>
 		/// <param name="field"></param>
-		public void DrawField(HashSet<IObjectGame>[,] field)
+		public void DrawField(HashSet<IObjectGame>[,] field,bool testflag)
 		{
+			this.testflag = testflag;
 			if (height != field.GetLength(0) || width != field.GetLength(1))
 				InitializeField(field.GetLength(0), field.GetLength(1));
 			DrawEverything(field);

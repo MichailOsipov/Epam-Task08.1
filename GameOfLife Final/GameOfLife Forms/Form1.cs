@@ -26,7 +26,7 @@ namespace GameOfLife_Forms
 			//render.DrawField(field);
 			InitializeComponent();
 			render = new FormRender(textBoxSaveMessager, panelGameField,this);			
-			//model = new MyModel(render);
+			model = new MyModel(render);
 		}
 
 		private void стандартныйРежимToolStripMenuItem_Click(object sender, EventArgs e)
