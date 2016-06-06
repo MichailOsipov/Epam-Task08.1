@@ -45,7 +45,7 @@ namespace ModelFiles
 		/// <summary>
 		/// Игровое поле
 		/// </summary>
-		private HashSet<IObjectGame>[,] field;
+		private HashSet<IObjectGame>[,] field1;
 		private Dictionary<ActionType, MyDelegate> myActions;
 		/// <summary>
 		/// Конструктор
@@ -174,7 +174,7 @@ namespace ModelFiles
 				while (DoSmth == null && gameIsNotPaused && gameIsBeginOrNotFinished)
 				{
 					Update();
-					render.DrawField(field);
+					render.DrawField(field1);
 				}
 			}
 		}

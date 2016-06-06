@@ -29,7 +29,7 @@ namespace ModelFiles
 		///Параметры поля
 		int width = -1;
 		int height = -1;
-		int imageSize = 36;//Размер картинки 36 пикселей
+		int imageSize = 64;//Размер картинки 36 пикселей
 		/// <summary>
 		/// Отступы для панели
 		/// </summary>
@@ -93,7 +93,7 @@ namespace ModelFiles
 		/// <returns></returns>
 		private Bitmap GetImage(HashSet<IObjectGame> objects)
 		{
-			///Приходится делать из-за приоритета печати ( например, если в одной клетке трава и корова, мы печатаем траву)
+			///Приходится делать из-за приоритета печати ( например, если в одной клетке трава и корова, мы печатаем корову)
 
 			if (objects == null)
 				return null;
@@ -130,6 +130,7 @@ namespace ModelFiles
 				for (int i = 0; i < height; i++)
 					for (int j = 0; j < width; j++)
 						imgArray[i * width + j].Image = GetImage(field[i, j]);
+						
 			}
 		}
 		/// <summary>

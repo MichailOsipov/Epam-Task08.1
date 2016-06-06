@@ -26,12 +26,12 @@ namespace GameOfLife_Forms
 			//render.DrawField(field);
 			InitializeComponent();
 			render = new FormRender(textBoxSaveMessager, panelGameField,this);			
-			model = new MyModel(render);
+			//model = new MyModel(render);
 		}
 
 		private void стандартныйРежимToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-				model.AddActionToEvent(ActionType.NewGameStandart);
+			model.AddActionToEvent(ActionType.NewGameStandart);
 		}
 
 		private void режимПоАлгоритму42ToolStripMenuItem_Click(object sender, EventArgs e)
