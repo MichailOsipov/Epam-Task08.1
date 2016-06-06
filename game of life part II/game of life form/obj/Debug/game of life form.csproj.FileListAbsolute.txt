@@ -1,9 +1,0 @@
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\bin\Debug\game of life form.exe.config
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\bin\Debug\game of life form.exe
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\bin\Debug\game of life form.pdb
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\obj\Debug\game of life form.csprojResolveAssemblyReference.cache
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\obj\Debug\game_of_life_form.Form1.resources
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\obj\Debug\game_of_life_form.Properties.Resources.resources
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\obj\Debug\game of life form.csproj.GenerateResource.Cache
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\obj\Debug\game of life form.exe
-G:\Users\Michail\myrepositories\task08.1\game of life part II\game of life form\obj\Debug\game of life form.pdb
