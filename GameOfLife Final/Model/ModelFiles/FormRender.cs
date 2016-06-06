@@ -30,6 +30,11 @@ namespace ModelFiles
 		int width = -1;
 		int height = -1;
 		int imageSize = 36;//Размер картинки 36 пикселей
+		/// <summary>
+		/// Отступы для панели
+		/// </summary>
+		int dx = 100;
+		int dy = 100;
 		public FormRender(TextBox textBoxSaves, Panel panelField, Form form)
 		{
 			LoadImages();
@@ -61,8 +66,12 @@ namespace ModelFiles
 		{
 			height = newHeight;
 			width = newWidth;
+
 			panelField.Size = new Size(width * imageSize, height * imageSize);
 			imgArray = new PictureBox[width * height];
+
+			myForm.MinimumSize = new Size(width * imageSize + panelField.Location.X + dx, height * imageSize + panelField.Location.Y + dy);
+
 			for (int j = 0; j < height; j++)
 				for (int i = 0; i < width; i++)
 				{
@@ -77,24 +86,66 @@ namespace ModelFiles
 					imgArray[j * width + i].BackColor = Color.White;
 				}
 		}
+		/// <summary>
+		/// Получение картинки в зависимости от объектов на клетке поля
+		/// </summary>
+		/// <param name="objects"></param>
+		/// <returns></returns>
+		private Bitmap GetImage(HashSet<IObjectGame> objects)
+		{
+			///Приходится делать из-за приоритета печати ( например, если в одной клетке трава и корова, мы печатаем траву)
 
+			if (objects == null)
+				return null;
+
+			foreach (var temp in objects)
+				if (temp.ObjectType == "Cow")
+					return myImages["Cow"];
+
+			foreach (var temp in objects)
+				if (temp.ObjectType == "DeadCow")
+					return myImages["DeadCow"];
+
+			foreach (var temp in objects)
+				if (temp.ObjectType == "DefaultGrass")
+					return myImages["DefaultGrass"];
+
+			foreach (var temp in objects)
+				if (temp.ObjectType == "WildGrass")
+					return myImages["WildGrass"];
+
+			return null;
+
+		}
+		/// <summary>
+		/// Рисуем поле
+		/// </summary>
+		/// <param name="field"></param>
 		private void DrawEverything(HashSet<IObjectGame>[,] field)
 		{
 			if (myForm.InvokeRequired)
 				myForm.Invoke((Action)delegate() { DrawEverything(field); });
 			else
 			{
-				for (int j = 0; j < height; j++)
-					for (int i = 0; i < width; i++)
-							imgArray[j * width + i].Image = myImages["WildGrass"];
+				for (int i = 0; i < height; i++)
+					for (int j = 0; j < width; j++)
+						imgArray[i * width + j].Image = GetImage(field[i, j]);
 			}
 		}
+		/// <summary>
+		/// Начинаем рисовать поле, если работаем с новым поле, пересоздаем поле
+		/// </summary>
+		/// <param name="field"></param>
 		public void DrawField(HashSet<IObjectGame>[,] field)
 		{
 			if (height != field.GetLength(0) || width != field.GetLength(1))
 				InitializeField(field.GetLength(0), field.GetLength(1));
-			DrawEverything(field);			
+			DrawEverything(field);
 		}
+		/// <summary>
+		/// Отображаем сохранения
+		/// </summary>
+		/// <param name="saves"></param>
 		public void DrawSaves(List<string> saves)
 		{
 			StringBuilder sb = new StringBuilder();

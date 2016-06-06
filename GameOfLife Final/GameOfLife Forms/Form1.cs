@@ -21,19 +21,17 @@ namespace GameOfLife_Forms
 		{
 			//model = new MyModel();
 			////model.DoSmth+=new MyDelegate(model.InitializeProperties);
-			//string temp = "23232\r\n45454\r\n";			
-			InitializeComponent();
-			render = new FormRender(textBoxSaveMessager, panelGameField,this);
+			//string temp = "23232\r\n45454\r\n";
 			//HashSet<IObjectGame>[,] field = new HashSet<IObjectGame>[5, 3];
 			//render.DrawField(field);
+			InitializeComponent();
+			render = new FormRender(textBoxSaveMessager, panelGameField,this);			
 			model = new MyModel(render);
 		}
 
 		private void стандартныйРежимToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			HashSet<IObjectGame>[,] field = new HashSet<IObjectGame>[5, 3];
-			render.DrawField(field);
-				//model.AddActionToEvent(ActionType.NewGameStandart);
+				model.AddActionToEvent(ActionType.NewGameStandart);
 		}
 
 		private void режимПоАлгоритму42ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,6 +75,10 @@ namespace GameOfLife_Forms
 			this.Close();
 		}
 
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			model.AddActionToEvent(ActionType.Exit);
+		}
 
 	}
 }

@@ -77,42 +77,73 @@ namespace ModelFiles
 			myActions.Add(ActionType.RemoveGame, this.RemoveGame);
 			myActions.Add(ActionType.Exit, this.Exit);
 		}
+		/// <summary>
+		/// Новая игра, стандартный режим
+		/// </summary>
 		private void NewGameStandart()
 		{
 
 		}
+		/// <summary>
+		/// Новая игра, режим по алгоритму 4.2
+		/// </summary>
 		private void NewGameAlgorithm42()
 		{
 
 		}
+		/// <summary>
+		/// Новая игра, смешанный режим
+		/// </summary>
 		private void NewGameMixed()
 		{
 
 		}
+		/// <summary>
+		/// Новая игра, режим с животными
+		/// </summary>
 		private void NewGameWithAnimals()
 		{
 
 		}
+		/// <summary>
+		/// Посмотреть сохранения
+		/// </summary>
 		private void ShowSaves()
 		{
 
 		}
+		/// <summary>
+		/// Сохранить игру
+		/// </summary>
 		private void SaveGame()
 		{
 
 		}
+		/// <summary>
+		/// Загрузить игру
+		/// </summary>
 		private void LoadGame()
 		{
 
 		}
+		/// <summary>
+		/// Удалить игру
+		/// </summary>
 		private void RemoveGame()
 		{
 
 		}
+		/// <summary>
+		/// Выход
+		/// </summary>
 		private void Exit()
 		{
 			gameIsRunning = false;
 		}
+		/// <summary>
+		/// Добавить какое то действие к событию
+		/// </summary>
+		/// <param name="action">Событие</param>
 		public void AddActionToEvent(ActionType action)
 		{
 			lock (threadlock)
@@ -127,6 +158,9 @@ namespace ModelFiles
 		{
 
 		}
+		/// <summary>
+		/// Игровой поток
+		/// </summary>
 		private void Waiter()
 		{
 			while (gameIsRunning)
