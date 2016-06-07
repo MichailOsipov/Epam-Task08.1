@@ -46,7 +46,18 @@ namespace ModelFiles
 		/// Игровое поле
 		/// </summary>
 		private HashSet<IObjectGame>[,] field1;
+		/// <summary>
+		/// Список игровых объектов, учавствующих в игре
+		/// </summary>
+		private List<IObjectGame> myGameObjects;
+		/// <summary>
+		/// Словарь событий, которые нужно выполнить (Новая игра, сохранить, и т.д.)
+		/// </summary>
 		private Dictionary<ActionType, MyDelegate> myActions;
+		/// <summary>
+		/// Класс для работы с базой данных
+		/// </summary>
+		private DataBaseManager dataBaseManager;
 		/// <summary>
 		/// Конструктор
 		/// </summary>
@@ -65,6 +76,8 @@ namespace ModelFiles
 			gameIsRunning = true;
 			gameIsNotPaused = true;
 			gameIsBeginOrNotFinished = false;
+
+			dataBaseManager = new DataBaseManager();
 
 			myActions = new Dictionary<ActionType, MyDelegate>();
 			myActions.Add(ActionType.NewGameStandart, this.NewGameStandart);
@@ -110,7 +123,9 @@ namespace ModelFiles
 		/// </summary>
 		private void ShowSaves()
 		{
-
+			render.DisplayMessageToLog("Сохранения загружаются");
+			render.DrawSaves(dataBaseManager.GetAllSaves());
+			render.DisplayMessageToLog("Сохранения загрузились");
 		}
 		/// <summary>
 		/// Сохранить игру
@@ -152,16 +167,24 @@ namespace ModelFiles
 			}
 		}
 		/// <summary>
+		/// Удалить все события
+		/// </summary>
+		private void ClearDoSmth()
+		{
+			foreach(var eh in myActions)
+			{
+				DoSmth -= eh.Value;
+			}
+		}
+		/// <summary>
 		/// Функция, которая обновляет поле
 		/// </summary>
 		private void Update()
 		{
-			field1 = new HashSet<IObjectGame>[5, 3];
 		}
 		/// <summary>
 		/// Игровой поток
 		/// </summary>
-		bool testflag = true;
 		private void Waiter()
 		{
 			while (gameIsRunning)
@@ -169,15 +192,15 @@ namespace ModelFiles
 				lock (threadlock)
 				{
 					if (DoSmth != null)
+					{
 						DoSmth();
+						ClearDoSmth();
+					}
 				}
-				//Нужна ли DoSmth==null?
-				//while (DoSmth == null && gameIsNotPaused && gameIsBeginOrNotFinished)
-				while(true)
+				while (DoSmth == null && gameIsNotPaused && gameIsBeginOrNotFinished)
 				{
 					Update();
-					render.DrawField(field1,testflag);
-					testflag = !testflag;
+					render.DrawField(field1);
 					Thread.Sleep(1000);
 				}
 			}

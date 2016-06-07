@@ -24,22 +24,23 @@ namespace ModelFiles
 		Dictionary<string, Bitmap> myImages = new Dictionary<string, Bitmap>();
 		System.Windows.Forms.PictureBox[] imgArray;
 		TextBox textBoxSaves;
+		TextBox textBoxLog;
 		Panel panelField;
 		Form myForm;
 		///Параметры поля
 		int width = -1;
 		int height = -1;
 		int imageSize = 64;//Размер картинки 36 пикселей
-		bool testflag;
 		/// <summary>
 		/// Отступы для панели
 		/// </summary>
 		int dx = 100;
 		int dy = 100;
-		public FormRender(TextBox textBoxSaves, Panel panelField, Form form)
+		public FormRender(TextBox textBoxSaves, TextBox textBoxLog, Panel panelField, Form form)
 		{
 			LoadImages();
 			this.textBoxSaves = textBoxSaves;
+			this.textBoxLog = textBoxLog;
 			this.panelField = panelField;
 			this.myForm = form;
 		}
@@ -135,22 +136,16 @@ namespace ModelFiles
 			{
 				for (int i = 0; i < height; i++)
 					for (int j = 0; j < width; j++)
-						if (testflag)
-							imgArray[i * width + j].Image = myImages["Cow"];
-						else
-							imgArray[i * width + j].Image = myImages["DefaultGrass"];
+						imgArray[i * width + j].Image = GetImage(field[i, j]);
 
-						//imgArray[i * width + j].Image = GetImage(field[i, j]);
-						
 			}
 		}
 		/// <summary>
 		/// Начинаем рисовать поле, если работаем с новым поле, пересоздаем поле
 		/// </summary>
 		/// <param name="field"></param>
-		public void DrawField(HashSet<IObjectGame>[,] field,bool testflag)
+		public void DrawField(HashSet<IObjectGame>[,] field)
 		{
-			this.testflag = testflag;
 			if (height != field.GetLength(0) || width != field.GetLength(1))
 				InitializeField(field.GetLength(0), field.GetLength(1));
 			DrawEverything(field);
@@ -161,14 +156,34 @@ namespace ModelFiles
 		/// <param name="saves"></param>
 		public void DrawSaves(List<string> saves)
 		{
-			StringBuilder sb = new StringBuilder();
-			sb.Append("Сохранения:\r\n");
-			foreach (var temp in saves)
+			if (myForm.InvokeRequired)
+				myForm.Invoke((Action)delegate() { DrawSaves(saves); });
+			else
 			{
-				sb.Append(temp);
-				sb.Append("\r\n");
+				if (saves == null)
+					textBoxSaves.Text = "Нет сохранений :(\r\n";
+				StringBuilder sb = new StringBuilder();
+				sb.Append("Сохранения:\r\n");
+				int i = 1;
+				foreach (var temp in saves)
+				{
+					sb.Append(i.ToString());
+					sb.Append(". ");
+					sb.Append(temp);
+					sb.Append("\r\n");
+					i++;
+				}
+				textBoxSaves.Text = sb.ToString();
 			}
-			textBoxSaves.Text = sb.ToString();
+		}
+		public void DisplayMessageToLog(string message)
+		{
+			if (myForm.InvokeRequired)
+				myForm.Invoke((Action)delegate() { DisplayMessageToLog(message); });
+			else
+			{
+				textBoxLog.Text = message;
+			}
 		}
 	}
 }

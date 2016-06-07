@@ -8,7 +8,20 @@ namespace Model.Interfaces
 {
 	public interface IRender
 	{
-		void DrawField(HashSet<IObjectGame>[,]Field,bool testflag);
+		/// <summary>
+		/// Нарисовать игровое поле
+		/// </summary>
+		/// <param name="field"></param>
+		void DrawField(HashSet<IObjectGame>[,]field);
+		/// <summary>
+		/// Отобразить сохранения
+		/// </summary>
+		/// <param name="saves"></param>
 		void DrawSaves(List<string> saves);
+		/// <summary>
+		/// Вывести какое-то сообщение
+		/// </summary>
+		/// <param name="message"></param>
+		void DisplayMessageToLog(string message);
 	}
 }

@@ -15,17 +15,15 @@ namespace GameOfLife_Forms
 {
 	public partial class Form1 : Form
 	{
+		/// <summary>
+		/// Контроллера тут у меня нет
+		/// </summary>
 		FormRender render;
 		MyModel model;
 		public Form1()
 		{
-			//model = new MyModel();
-			////model.DoSmth+=new MyDelegate(model.InitializeProperties);
-			//string temp = "23232\r\n45454\r\n";
-			//HashSet<IObjectGame>[,] field = new HashSet<IObjectGame>[5, 3];
-			//render.DrawField(field);
 			InitializeComponent();
-			render = new FormRender(textBoxSaveMessager, panelGameField,this);			
+			render = new FormRender(textBoxSaveMessager,textBoxLog, panelGameField,this);			
 			model = new MyModel(render);
 		}
 
@@ -75,10 +73,19 @@ namespace GameOfLife_Forms
 			this.Close();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+		private void Form1_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			model.AddActionToEvent(ActionType.Exit);
 		}
+
+		//private void Form1_Closed(object sender,EventArgs e)
+		//{
+		//	//model.AddActionToEvent(ActionType.Exit);
+		//}
+		//private void Form1_Load(object sender, EventArgs e)
+		//{
+		//	model.AddActionToEvent(ActionType.Exit);
+		//}
 
 	}
 }

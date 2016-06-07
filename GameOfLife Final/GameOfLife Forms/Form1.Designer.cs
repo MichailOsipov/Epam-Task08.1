@@ -42,6 +42,7 @@
 			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panelGameField = new System.Windows.Forms.Panel();
 			this.textBoxSaveMessager = new System.Windows.Forms.TextBox();
+			this.textBoxLog = new System.Windows.Forms.TextBox();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -51,7 +52,7 @@
             this.играToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(881, 24);
+			this.menuStrip1.Size = new System.Drawing.Size(872, 24);
 			this.menuStrip1.TabIndex = 0;
 			this.menuStrip1.Text = "menuStrip1";
 			// 
@@ -144,32 +145,42 @@
 			// 
 			// panelGameField
 			// 
-			this.panelGameField.Location = new System.Drawing.Point(270, 27);
+			this.panelGameField.Location = new System.Drawing.Point(377, 27);
 			this.panelGameField.Name = "panelGameField";
-			this.panelGameField.Size = new System.Drawing.Size(514, 347);
+			this.panelGameField.Size = new System.Drawing.Size(405, 347);
 			this.panelGameField.TabIndex = 1;
 			// 
 			// textBoxSaveMessager
 			// 
-			this.textBoxSaveMessager.Location = new System.Drawing.Point(30, 70);
+			this.textBoxSaveMessager.Location = new System.Drawing.Point(30, 94);
 			this.textBoxSaveMessager.Multiline = true;
 			this.textBoxSaveMessager.Name = "textBoxSaveMessager";
 			this.textBoxSaveMessager.ReadOnly = true;
-			this.textBoxSaveMessager.Size = new System.Drawing.Size(194, 304);
+			this.textBoxSaveMessager.Size = new System.Drawing.Size(318, 280);
 			this.textBoxSaveMessager.TabIndex = 2;
+			// 
+			// textBoxLog
+			// 
+			this.textBoxLog.Location = new System.Drawing.Point(30, 47);
+			this.textBoxLog.Multiline = true;
+			this.textBoxLog.Name = "textBoxLog";
+			this.textBoxLog.ReadOnly = true;
+			this.textBoxLog.Size = new System.Drawing.Size(317, 32);
+			this.textBoxLog.TabIndex = 3;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(881, 441);
+			this.ClientSize = new System.Drawing.Size(872, 467);
+			this.Controls.Add(this.textBoxLog);
 			this.Controls.Add(this.textBoxSaveMessager);
 			this.Controls.Add(this.panelGameField);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
-			this.Text = "Form1";
-			this.Load += new System.EventHandler(this.Form1_Load);
+			this.Text = "Game about life of animals and grass";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
@@ -193,6 +204,7 @@
 		private System.Windows.Forms.ToolStripMenuItem режимСЖивотнымиToolStripMenuItem;
 		private System.Windows.Forms.TextBox textBoxSaveMessager;
 		private System.Windows.Forms.ToolStripMenuItem посмотретьСохраненияToolStripMenuItem;
+		private System.Windows.Forms.TextBox textBoxLog;
 	}
 }
 

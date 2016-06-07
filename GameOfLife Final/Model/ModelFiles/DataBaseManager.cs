@@ -1,4 +1,5 @@
 ﻿using Model.GameSaves;
+using Model.ModelFiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,20 +10,22 @@ namespace ModelFiles
 {
 	public class DataBaseManager
 	{
+		/// <summary>
+		/// Нужно переделать
+		/// </summary>
 		public void AddSaveToDataBase()
 		{
-			using (var temp = new SavedGames())
+			using (var db = new SavedGames())
 			{
 				try
 				{
-					SaveData k = new SaveData { Width = 10,Height=10,SaveTime=DateTime.Now };
-					temp.MySaves.Add(k);
-					temp.SaveChanges();
+					SaveData k = new SaveData { Width = 10, Height = 10, SaveTime = DateTime.Now };
+					db.MySaves.Add(k);
+					db.SaveChanges();
 				}
-				catch(Exception ex)
+				catch (Exception ex)
 				{
 					Console.WriteLine(ex.Message);
-					Console.WriteLine("!");
 				}
 			}
 		}
@@ -30,12 +33,48 @@ namespace ModelFiles
 		{
 
 		}
-
-		public List<string> ShowAllSaves()
+		/// <summary>
+		/// Вернуть список сохранений в виде: Height X, Width Y, Time Z
+		/// </summary>
+		/// <returns></returns>
+		public List<string> GetAllSaves()
 		{
+			List<string> result = new List<string>();
+			using (var db = new SavedGames())
+			{
+				try
+				{
+					var saves = db.MySaves;
+					if (saves.Count() == 0)
+						return null;
+
+					StringBuilder sb = new StringBuilder();
+
+					foreach (var temp in saves)
+					{						
+						sb.Append("Height: ");
+						sb.Append(temp.Height);
+						sb.Append(", ");
+						sb.Append("Width: ");
+						sb.Append(temp.Width);
+						sb.Append(", ");
+						sb.Append("Time: ");
+						sb.Append(temp.SaveTime.ToString());
+						result.Add(sb.ToString());
+						sb.Clear();
+					}
+					return result;
+				}
+				catch (Exception ex)
+				{
+					LoggerWorker exceptionWorker = new LoggerWorker();
+					exceptionWorker.Log(ex.Message);
+				}
+			}
+
+
 
 			return null;
 		}
-
 	}
 }
