@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.ModelFiles;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace Model.Interfaces
 		/// Нарисовать игровое поле
 		/// </summary>
 		/// <param name="field"></param>
-		void DrawField(HashSet<IObjectGame>[,]field);
+		void DrawField(Field field);
 		/// <summary>
 		/// Отобразить сохранения
 		/// </summary>

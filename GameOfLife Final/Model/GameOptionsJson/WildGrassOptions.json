@@ -1,0 +1,5 @@
+{
+	"MinNeighboorsToDie": 9,
+	"LeftBorderToMultiply": 10,
+	"RightBorderToMultiply": 11
+}

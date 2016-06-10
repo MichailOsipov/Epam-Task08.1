@@ -58,6 +58,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormRender.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -71,6 +72,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -91,6 +93,21 @@
       <Project>{98b4f57e-4613-4627-8738-7fc6ed85ac31}</Project>
       <Name>Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Cow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\CowDead.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\GrassDefault.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\GrassWild.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\SuperMultyGrass.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

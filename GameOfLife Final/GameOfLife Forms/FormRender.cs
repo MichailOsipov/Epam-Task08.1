@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
+using Model.ModelFiles;
 
 namespace ModelFiles
 {
@@ -19,9 +20,9 @@ namespace ModelFiles
 		/// Ключевые слова:
 		/// Cow - просто корова
 		/// DeadCow - корова умерла
-		/// DefaultGrass - обычная трава
+		/// StandartGrass - обычная трава
 		/// WildGrass - дикая трава, по алгоритму 4.2
-		Dictionary<string, Bitmap> myImages = new Dictionary<string, Bitmap>();
+		Dictionary<ObjectType, Bitmap> myImages = new Dictionary<ObjectType, Bitmap>();
 		System.Windows.Forms.PictureBox[] imgArray;
 		TextBox textBoxSaves;
 		TextBox textBoxLog;
@@ -49,16 +50,17 @@ namespace ModelFiles
 		/// </summary>
 		private void LoadImages()
 		{
-			//Почему-то видит файлы только в Debug
-			Bitmap cowImage = new Bitmap(Path.GetFullPath("Cow.png"));
-			Bitmap cowDeadImage = new Bitmap(Path.GetFullPath("CowDead.png"));
-			Bitmap grassDefaultImage = new Bitmap(Path.GetFullPath("GrassDefault.png"));
-			Bitmap grassWildImage = new Bitmap(Path.GetFullPath("GrassWild.png"));
+			Bitmap cowImage = new Bitmap(GameOfLife_Forms.Properties.Resources.Cow);
+			Bitmap cowDeadImage = new Bitmap(GameOfLife_Forms.Properties.Resources.CowDead);
+			Bitmap grassDefaultImage = new Bitmap(GameOfLife_Forms.Properties.Resources.GrassDefault);
+			Bitmap grassWildImage = new Bitmap(GameOfLife_Forms.Properties.Resources.GrassWild);
+			Bitmap grassSuperMultiplyImage = new Bitmap(GameOfLife_Forms.Properties.Resources.SuperMultyGrass);
 
-			myImages.Add("Cow", cowImage);
-			myImages.Add("DeadCow", cowDeadImage);
-			myImages.Add("DefaultGrass", grassDefaultImage);
-			myImages.Add("WildGrass", grassWildImage);
+			myImages.Add(ObjectType.Cow, cowImage);
+			myImages.Add(ObjectType.DeadCow, cowDeadImage);
+			myImages.Add(ObjectType.StandartGrass, grassDefaultImage);
+			myImages.Add(ObjectType.WildGrass, grassWildImage);
+			myImages.Add(ObjectType.SuperMultiplyGrass, grassSuperMultiplyImage);
 		}
 		/// <summary>
 		/// Инициализация поля, запускается первый раз или если размеры поля изменились(например если начата новая игра)
@@ -94,41 +96,53 @@ namespace ModelFiles
 			}
 		}
 		/// <summary>
-		/// Получение картинки в зависимости от объектов на клетке поля
+		/// Получение картинки в зависимости от объектов на клетке поля (определяем, что нарисовать в ячейке поля)
 		/// </summary>
 		/// <param name="objects"></param>
 		/// <returns></returns>
-		private Bitmap GetImage(HashSet<IObjectGame> objects)
+		private Bitmap GetImage(Field field, int x, int y)
 		{
 			///Приходится делать из-за приоритета печати ( например, если в одной клетке трава и корова, мы печатаем корову)
 
-			if (objects == null)
+			if (field.IsEmpty(x, y))
 				return null;
 
-			foreach (var temp in objects)
-				if (temp.ObjectType == "Cow")
-					return myImages["Cow"];
+			if (field.Contains(x, y, ObjectType.Cow))
+				return myImages[ObjectType.Cow];
 
-			foreach (var temp in objects)
-				if (temp.ObjectType == "DeadCow")
-					return myImages["DeadCow"];
+			if (field.Contains(x, y, ObjectType.DeadCow))
+				return myImages[ObjectType.DeadCow];
 
-			foreach (var temp in objects)
-				if (temp.ObjectType == "DefaultGrass")
-					return myImages["DefaultGrass"];
+			if (field.Contains(x, y, ObjectType.StandartGrass))
+				return myImages[ObjectType.StandartGrass];
 
-			foreach (var temp in objects)
-				if (temp.ObjectType == "WildGrass")
-					return myImages["WildGrass"];
+			if (field.Contains(x, y, ObjectType.WildGrass))
+				return myImages[ObjectType.WildGrass];
+
+			if (field.Contains(x, y, ObjectType.SuperMultiplyGrass))
+				return myImages[ObjectType.SuperMultiplyGrass];
+			//if (objects == null)
+			//	return null;
+			//foreach (var temp in objects)
+			//	if (temp.objectType == ObjectType.Cow)
+			//		return myImages[ObjectType.Cow];
+			//foreach (var temp in objects)
+			//	if (temp.objectType == ObjectType.DeadCow)
+			//		return myImages[ObjectType.DeadCow];
+			//foreach (var temp in objects)
+			//	if (temp.objectType == ObjectType.StandartGrass)
+			//		return myImages[ObjectType.StandartGrass];
+			//foreach (var temp in objects)
+			//	if (temp.objectType == ObjectType.WildGrass)
+			//		return myImages[ObjectType.WildGrass];
 
 			return null;
-
 		}
 		/// <summary>
 		/// Рисуем поле
 		/// </summary>
 		/// <param name="field"></param>
-		private void DrawEverything(HashSet<IObjectGame>[,] field)
+		private void DrawEverything(Field field)
 		{
 			if (myForm.InvokeRequired)
 				myForm.Invoke((Action)delegate() { DrawEverything(field); });
@@ -136,18 +150,17 @@ namespace ModelFiles
 			{
 				for (int i = 0; i < height; i++)
 					for (int j = 0; j < width; j++)
-						imgArray[i * width + j].Image = GetImage(field[i, j]);
-
+						imgArray[i * width + j].Image = GetImage(field, i, j);
 			}
 		}
 		/// <summary>
 		/// Начинаем рисовать поле, если работаем с новым поле, пересоздаем поле
 		/// </summary>
 		/// <param name="field"></param>
-		public void DrawField(HashSet<IObjectGame>[,] field)
+		public void DrawField(Field field)
 		{
-			if (height != field.GetLength(0) || width != field.GetLength(1))
-				InitializeField(field.GetLength(0), field.GetLength(1));
+			if (height != field.Height || width != field.Width)
+				InitializeField(field.Height, field.Width);
 			DrawEverything(field);
 		}
 		/// <summary>
@@ -176,6 +189,10 @@ namespace ModelFiles
 				textBoxSaves.Text = sb.ToString();
 			}
 		}
+		/// <summary>
+		/// Отобразить какое то сообщение в окошечке Log
+		/// </summary>
+		/// <param name="message"></param>
 		public void DisplayMessageToLog(string message)
 		{
 			if (myForm.InvokeRequired)

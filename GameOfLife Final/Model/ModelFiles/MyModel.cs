@@ -45,11 +45,11 @@ namespace ModelFiles
 		/// <summary>
 		/// Игровое поле
 		/// </summary>
-		private HashSet<IObjectGame>[,] field1;
+		private Field field1;
 		/// <summary>
 		/// Список игровых объектов, учавствующих в игре
 		/// </summary>
-		private List<IObjectGame> myGameObjects;
+		private List<ObjectGame> myGameObjects;
 		/// <summary>
 		/// Словарь событий, которые нужно выполнить (Новая игра, сохранить, и т.д.)
 		/// </summary>

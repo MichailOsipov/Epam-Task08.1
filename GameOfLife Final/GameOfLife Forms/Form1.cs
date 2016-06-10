@@ -23,51 +23,57 @@ namespace GameOfLife_Forms
 		public Form1()
 		{
 			InitializeComponent();
-			render = new FormRender(textBoxSaveMessager,textBoxLog, panelGameField,this);			
+			OptionsStorage temp = new OptionsStorage();
+			render = new FormRender(textBoxSaveMessager,textBoxLog, panelGameField,this);
+			//Field field = new Field(6,5);
+
+			//ObjectGame temp = new ObjectGame { objectType = ObjectType.Cow };
+			//field.myField[2, 2].Add(temp);
+			//render.DrawField(field);
 			model = new MyModel(render);
 		}
 
-		private void стандартныйРежимToolStripMenuItem_Click(object sender, EventArgs e)
+		private void standartModeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.NewGameStandart);
 		}
 
-		private void режимПоАлгоритму42ToolStripMenuItem_Click(object sender, EventArgs e)
+		private void algorithm42ToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.NewGameAlgorithm42);
 		}
 
-		private void смешанныйРежимToolStripMenuItem_Click(object sender, EventArgs e)
+		private void mixedModeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.NewGameMixed);
 		}
 
-		private void режимСЖивотнымиToolStripMenuItem_Click(object sender, EventArgs e)
+		private void animalsModeToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.NewGameAnimals);
 		}
 
-		private void посмотретьСохраненияToolStripMenuItem_Click(object sender, EventArgs e)
+		private void viewSavesToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.ShowSaves);
 		}
 
-		private void сохранитьИгруToolStripMenuItem_Click(object sender, EventArgs e)
+		private void saveGameToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.SaveGame);
 		}
 
-		private void загрузитьИгруToolStripMenuItem_Click(object sender, EventArgs e)
+		private void loadGameToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.LoadGame);
 		}
 
-		private void удалитьИгруToolStripMenuItem_Click(object sender, EventArgs e)
+		private void removeGameToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.RemoveGame);
 		}
 
-		private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			model.AddActionToEvent(ActionType.Exit);
 			this.Close();
@@ -78,14 +84,9 @@ namespace GameOfLife_Forms
 			model.AddActionToEvent(ActionType.Exit);
 		}
 
-		//private void Form1_Closed(object sender,EventArgs e)
-		//{
-		//	//model.AddActionToEvent(ActionType.Exit);
-		//}
-		//private void Form1_Load(object sender, EventArgs e)
-		//{
-		//	model.AddActionToEvent(ActionType.Exit);
-		//}
+		private void buttonInput_Click(object sender, EventArgs e)
+		{
 
+		}
 	}
 }

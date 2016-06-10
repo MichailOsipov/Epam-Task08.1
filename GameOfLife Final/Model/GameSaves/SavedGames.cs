@@ -1,5 +1,6 @@
 namespace Model.GameSaves
 {
+	using Model.ModelFiles;
 	using System;
 	using System.Data.Entity;
 	using System.Linq;
@@ -35,8 +36,8 @@ namespace Model.GameSaves
 	public class ObjectGameData
 	{
 		public int Id { get; set; }
-		public string ObjectType { get; set; }
-		public string ObjectSerializedParameters { get; set; }
+		public ObjectType objectType { get; set; }
+		public string ObjectSerializedBehaviour { get; set; }
 		public SaveData SaveIdentificator { get; set; }
 	}
 }

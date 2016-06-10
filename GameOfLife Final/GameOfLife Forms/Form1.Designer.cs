@@ -28,120 +28,25 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.играToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.новаяИграToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.стандартныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.режимПоАлгоритму42ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.смешанныйРежимToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.режимСЖивотнымиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.посмотретьСохраненияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.сохранитьИгруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.загрузитьИгруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.удалитьИгруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.panelGameField = new System.Windows.Forms.Panel();
 			this.textBoxSaveMessager = new System.Windows.Forms.TextBox();
 			this.textBoxLog = new System.Windows.Forms.TextBox();
+			this.textBoxInput = new System.Windows.Forms.TextBox();
+			this.buttonInput = new System.Windows.Forms.Button();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.gameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.standartModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.algorithm42ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mixedModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.animalsModeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewSavesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.removeGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// menuStrip1
-			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.играToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(872, 24);
-			this.menuStrip1.TabIndex = 0;
-			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// играToolStripMenuItem
-			// 
-			this.играToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.новаяИграToolStripMenuItem,
-            this.посмотретьСохраненияToolStripMenuItem,
-            this.сохранитьИгруToolStripMenuItem,
-            this.загрузитьИгруToolStripMenuItem,
-            this.удалитьИгруToolStripMenuItem,
-            this.выходToolStripMenuItem});
-			this.играToolStripMenuItem.Name = "играToolStripMenuItem";
-			this.играToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-			this.играToolStripMenuItem.Text = "Игра";
-			// 
-			// новаяИграToolStripMenuItem
-			// 
-			this.новаяИграToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.стандартныйРежимToolStripMenuItem,
-            this.режимПоАлгоритму42ToolStripMenuItem,
-            this.смешанныйРежимToolStripMenuItem,
-            this.режимСЖивотнымиToolStripMenuItem});
-			this.новаяИграToolStripMenuItem.Name = "новаяИграToolStripMenuItem";
-			this.новаяИграToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-			this.новаяИграToolStripMenuItem.Text = "Новая игра";
-			// 
-			// стандартныйРежимToolStripMenuItem
-			// 
-			this.стандартныйРежимToolStripMenuItem.Name = "стандартныйРежимToolStripMenuItem";
-			this.стандартныйРежимToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-			this.стандартныйРежимToolStripMenuItem.Text = "Стандартный режим";
-			this.стандартныйРежимToolStripMenuItem.Click += new System.EventHandler(this.стандартныйРежимToolStripMenuItem_Click);
-			// 
-			// режимПоАлгоритму42ToolStripMenuItem
-			// 
-			this.режимПоАлгоритму42ToolStripMenuItem.Name = "режимПоАлгоритму42ToolStripMenuItem";
-			this.режимПоАлгоритму42ToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-			this.режимПоАлгоритму42ToolStripMenuItem.Text = "Режим по алгоритму 4.2";
-			this.режимПоАлгоритму42ToolStripMenuItem.Click += new System.EventHandler(this.режимПоАлгоритму42ToolStripMenuItem_Click);
-			// 
-			// смешанныйРежимToolStripMenuItem
-			// 
-			this.смешанныйРежимToolStripMenuItem.Name = "смешанныйРежимToolStripMenuItem";
-			this.смешанныйРежимToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-			this.смешанныйРежимToolStripMenuItem.Text = "Смешанный режим";
-			this.смешанныйРежимToolStripMenuItem.Click += new System.EventHandler(this.смешанныйРежимToolStripMenuItem_Click);
-			// 
-			// режимСЖивотнымиToolStripMenuItem
-			// 
-			this.режимСЖивотнымиToolStripMenuItem.Name = "режимСЖивотнымиToolStripMenuItem";
-			this.режимСЖивотнымиToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
-			this.режимСЖивотнымиToolStripMenuItem.Text = "Режим с животными";
-			this.режимСЖивотнымиToolStripMenuItem.Click += new System.EventHandler(this.режимСЖивотнымиToolStripMenuItem_Click);
-			// 
-			// посмотретьСохраненияToolStripMenuItem
-			// 
-			this.посмотретьСохраненияToolStripMenuItem.Name = "посмотретьСохраненияToolStripMenuItem";
-			this.посмотретьСохраненияToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-			this.посмотретьСохраненияToolStripMenuItem.Text = "Посмотреть сохранения";
-			this.посмотретьСохраненияToolStripMenuItem.Click += new System.EventHandler(this.посмотретьСохраненияToolStripMenuItem_Click);
-			// 
-			// сохранитьИгруToolStripMenuItem
-			// 
-			this.сохранитьИгруToolStripMenuItem.Name = "сохранитьИгруToolStripMenuItem";
-			this.сохранитьИгруToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-			this.сохранитьИгруToolStripMenuItem.Text = "Сохранить игру";
-			this.сохранитьИгруToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИгруToolStripMenuItem_Click);
-			// 
-			// загрузитьИгруToolStripMenuItem
-			// 
-			this.загрузитьИгруToolStripMenuItem.Name = "загрузитьИгруToolStripMenuItem";
-			this.загрузитьИгруToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-			this.загрузитьИгруToolStripMenuItem.Text = "Загрузить игру";
-			this.загрузитьИгруToolStripMenuItem.Click += new System.EventHandler(this.загрузитьИгруToolStripMenuItem_Click);
-			// 
-			// удалитьИгруToolStripMenuItem
-			// 
-			this.удалитьИгруToolStripMenuItem.Name = "удалитьИгруToolStripMenuItem";
-			this.удалитьИгруToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-			this.удалитьИгруToolStripMenuItem.Text = "Удалить игру";
-			this.удалитьИгруToolStripMenuItem.Click += new System.EventHandler(this.удалитьИгруToolStripMenuItem_Click);
-			// 
-			// выходToolStripMenuItem
-			// 
-			this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-			this.выходToolStripMenuItem.Size = new System.Drawing.Size(208, 22);
-			this.выходToolStripMenuItem.Text = "Выход";
-			this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
 			// 
 			// panelGameField
 			// 
@@ -165,19 +70,134 @@
 			this.textBoxLog.Multiline = true;
 			this.textBoxLog.Name = "textBoxLog";
 			this.textBoxLog.ReadOnly = true;
-			this.textBoxLog.Size = new System.Drawing.Size(317, 32);
+			this.textBoxLog.Size = new System.Drawing.Size(318, 32);
 			this.textBoxLog.TabIndex = 3;
+			// 
+			// textBoxInput
+			// 
+			this.textBoxInput.Location = new System.Drawing.Point(30, 391);
+			this.textBoxInput.Name = "textBoxInput";
+			this.textBoxInput.Size = new System.Drawing.Size(165, 20);
+			this.textBoxInput.TabIndex = 4;
+			// 
+			// buttonInput
+			// 
+			this.buttonInput.Location = new System.Drawing.Point(229, 391);
+			this.buttonInput.Name = "buttonInput";
+			this.buttonInput.Size = new System.Drawing.Size(119, 20);
+			this.buttonInput.TabIndex = 5;
+			this.buttonInput.Text = "ОК";
+			this.buttonInput.UseVisualStyleBackColor = true;
+			this.buttonInput.Click += new System.EventHandler(this.buttonInput_Click);
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gameToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(814, 24);
+			this.menuStrip1.TabIndex = 6;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// gameToolStripMenuItem
+			// 
+			this.gameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newGameToolStripMenuItem,
+            this.viewSavesToolStripMenuItem,
+            this.saveGameToolStripMenuItem,
+            this.loadGameToolStripMenuItem,
+            this.removeGameToolStripMenuItem,
+            this.exitToolStripMenuItem});
+			this.gameToolStripMenuItem.Name = "gameToolStripMenuItem";
+			this.gameToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+			this.gameToolStripMenuItem.Text = "Game";
+			// 
+			// newGameToolStripMenuItem
+			// 
+			this.newGameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.standartModeToolStripMenuItem,
+            this.algorithm42ToolStripMenuItem,
+            this.mixedModeToolStripMenuItem,
+            this.animalsModeToolStripMenuItem});
+			this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
+			this.newGameToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+			this.newGameToolStripMenuItem.Text = "New game";
+			// 
+			// standartModeToolStripMenuItem
+			// 
+			this.standartModeToolStripMenuItem.Name = "standartModeToolStripMenuItem";
+			this.standartModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.standartModeToolStripMenuItem.Text = "Standart mode";
+			this.standartModeToolStripMenuItem.Click += new System.EventHandler(this.standartModeToolStripMenuItem_Click);
+			// 
+			// algorithm42ToolStripMenuItem
+			// 
+			this.algorithm42ToolStripMenuItem.Name = "algorithm42ToolStripMenuItem";
+			this.algorithm42ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.algorithm42ToolStripMenuItem.Text = "Algorithm 4.2";
+			this.algorithm42ToolStripMenuItem.Click += new System.EventHandler(this.algorithm42ToolStripMenuItem_Click);
+			// 
+			// mixedModeToolStripMenuItem
+			// 
+			this.mixedModeToolStripMenuItem.Name = "mixedModeToolStripMenuItem";
+			this.mixedModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.mixedModeToolStripMenuItem.Text = "Mixed mode";
+			this.mixedModeToolStripMenuItem.Click += new System.EventHandler(this.mixedModeToolStripMenuItem_Click);
+			// 
+			// animalsModeToolStripMenuItem
+			// 
+			this.animalsModeToolStripMenuItem.Name = "animalsModeToolStripMenuItem";
+			this.animalsModeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.animalsModeToolStripMenuItem.Text = "Animals mode";
+			this.animalsModeToolStripMenuItem.Click += new System.EventHandler(this.animalsModeToolStripMenuItem_Click);
+			// 
+			// viewSavesToolStripMenuItem
+			// 
+			this.viewSavesToolStripMenuItem.Name = "viewSavesToolStripMenuItem";
+			this.viewSavesToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+			this.viewSavesToolStripMenuItem.Text = "View saves";
+			this.viewSavesToolStripMenuItem.Click += new System.EventHandler(this.viewSavesToolStripMenuItem_Click);
+			// 
+			// saveGameToolStripMenuItem
+			// 
+			this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
+			this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+			this.saveGameToolStripMenuItem.Text = "Save game";
+			this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
+			// 
+			// loadGameToolStripMenuItem
+			// 
+			this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
+			this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+			this.loadGameToolStripMenuItem.Text = "Load game";
+			this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.loadGameToolStripMenuItem_Click);
+			// 
+			// removeGameToolStripMenuItem
+			// 
+			this.removeGameToolStripMenuItem.Name = "removeGameToolStripMenuItem";
+			this.removeGameToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+			this.removeGameToolStripMenuItem.Text = "Remove game";
+			this.removeGameToolStripMenuItem.Click += new System.EventHandler(this.removeGameToolStripMenuItem_Click);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+			this.exitToolStripMenuItem.Text = "Exit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(872, 467);
+			this.ClientSize = new System.Drawing.Size(814, 467);
+			this.Controls.Add(this.buttonInput);
+			this.Controls.Add(this.textBoxInput);
 			this.Controls.Add(this.textBoxLog);
 			this.Controls.Add(this.textBoxSaveMessager);
 			this.Controls.Add(this.panelGameField);
 			this.Controls.Add(this.menuStrip1);
-			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
 			this.Text = "Game about life of animals and grass";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -190,21 +210,23 @@
 
 		#endregion
 
-		private System.Windows.Forms.MenuStrip menuStrip1;
-		private System.Windows.Forms.ToolStripMenuItem играToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem сохранитьИгруToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem загрузитьИгруToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem удалитьИгруToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem новаяИграToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem стандартныйРежимToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem режимПоАлгоритму42ToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem смешанныйРежимToolStripMenuItem;
 		private System.Windows.Forms.Panel panelGameField;
-		private System.Windows.Forms.ToolStripMenuItem режимСЖивотнымиToolStripMenuItem;
 		private System.Windows.Forms.TextBox textBoxSaveMessager;
-		private System.Windows.Forms.ToolStripMenuItem посмотретьСохраненияToolStripMenuItem;
 		private System.Windows.Forms.TextBox textBoxLog;
+		private System.Windows.Forms.TextBox textBoxInput;
+		private System.Windows.Forms.Button buttonInput;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem gameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem standartModeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem algorithm42ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mixedModeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem animalsModeToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewSavesToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem removeGameToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 	}
 }
 

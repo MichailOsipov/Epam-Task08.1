@@ -53,26 +53,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviour\CowBehaviour.cs" />
+    <Compile Include="Behaviour\DeadCowBehaviour.cs" />
+    <Compile Include="Behaviour\StandartGrassBehaviour.cs" />
+    <Compile Include="Behaviour\SuperMultiplyGrassBehaviour.cs" />
+    <Compile Include="Behaviour\WildGrassBehaviourcs.cs" />
+    <Compile Include="GameOptions\CowOptions.cs" />
+    <Compile Include="GameOptions\DeadCowOptions.cs" />
+    <Compile Include="GameOptions\MapOptions.cs" />
+    <Compile Include="GameOptions\StandartGrassOptions.cs" />
+    <Compile Include="GameOptions\SuperMultiplyGrassOptions.cs" />
+    <Compile Include="GameOptions\WildGrassOptionscs.cs" />
     <Compile Include="GameSaves\SavedGames.cs" />
-    <Compile Include="Interfaces\IObjectGame.cs" />
+    <Compile Include="Interfaces\IBehaviour.cs" />
     <Compile Include="Interfaces\IRender.cs" />
-    <Compile Include="ModelFiles\ActionType.cs" />
+    <Compile Include="Enum\ActionType.cs" />
+    <Compile Include="ModelFiles\BehaviourFactory.cs" />
     <Compile Include="ModelFiles\DataBaseManager.cs" />
-    <Compile Include="ModelFiles\FormRender.cs" />
+    <Compile Include="GameObjects\Field.cs" />
     <Compile Include="ModelFiles\LoggerWorker.cs" />
     <Compile Include="ModelFiles\MyModel.cs" />
+    <Compile Include="GameObjects\ObjectGame.cs" />
+    <Compile Include="Enum\ObjectType.cs" />
+    <Compile Include="ModelFiles\OptionsStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="GameOptionsJson\CowOptions.json" />
+    <None Include="GameOptionsJson\DeadCowOptions.json" />
+    <None Include="GameOptionsJson\MapOptions.json" />
+    <None Include="GameOptionsJson\StandartGrassOptions.json" />
+    <None Include="GameOptionsJson\SuperMultiplyrassOptions.json" />
+    <None Include="GameOptionsJson\WildGrassOptions.json" />
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
